@@ -66,7 +66,6 @@ app.get('/boards', async (req, res) => {
 app.post('/boards', upload.single('image'), async (req, res) => {
   const { title, content } = req.body;
   const imageFile = req.file;
-  console.log(imageFile);
 
   const board = await Board.create({
     title,
@@ -74,7 +73,7 @@ app.post('/boards', upload.single('image'), async (req, res) => {
     imageUrl: imageFile.location
   });
 
-  res.status(201).send(board);
+  res.status(200).send(board);
 })
 
 
